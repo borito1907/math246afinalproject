@@ -1,0 +1,199 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{parskip}
+\usepackage{xr}
+\usepackage{textcomp}
+\usepackage{hyperref}
+
+\newgeometry{vmargin={15mm}, hmargin={24mm,34mm}}
+\theoremstyle{definition} 
+\newtheorem{definition}{Definition}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\mytilde}{\raisebox{0.5ex}{\texttildelow}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\logderivative}[1]{\frac{#1'}{#1}}
+\newcommand{\riemannsphere}{\C \cup \{ \infty \}}
+
+\title{Complex Analysis}
+\author{Boran Erol}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+The Prime Number Theorem (PNT) is one of the most celebrated theorems in mathematics. In this writeup,
+we look at some of the history of the Prime Number Theorem and review Newman's proof with a little bit 
+more detail and references to our class this quarter. At the end,
+I will give a brief overview of Alan Turing's relationship to the Riemann Hypothesis
+and point out an interesting connection to a remark made in class this quarter.
+
+Let $ \pi(x) $ be the function that counts the primes up to $ x $, i.e.\[ \pi(x) := \text{number of primes less than or equal to $ x $} .\]
+
+The Prime Number Theorem states that $ \pi(x) \sim \frac{x}{\log x} $, where $\log $ denotes the natural logarithm.
+Here, $ \sim $ means that \[ \lim_{x \to \infty} \frac{ \pi(x)}{x/ \log{x}} = 1 \]
+
+In other words, the Prime Number Theorem states that the $n$th prime will have size roughly $ n \log n $.
+In fact, Barkley Rosser proved in 1939 that the nth prime number is strictly greater than $ n \log n $.
+
+The Prime Number Theorem was first conjectured by Gauss when he was around 15 (in fact, 
+he conjectured that $ \pi(x) \sim Li(x) $, where $ Li(x) $ is the \href{https://en.wikipedia.org/wiki/Logarithmic_integral_function}{logarithmic integral function}
+, which turns out to be a better approximation) 
+using prime number tables compiled by Johann Heinrich Lambert, who is
+known for proving that $ \pi $ is irrational. Legendre, seemingly independently from Gauss,
+guessed in 1808 that
+
+\[ \pi(x) \sim \frac{x}{\log x - A(x)} \]
+
+for some $ A(x) $ that tends to a constant as $ x $ goes to infinity. In fact,
+some sources state as 
+
+\[ \pi(x) \sim \frac{x}{\log x - 1.08366} \]
+
+instead, but no explanation for this constant has been found in Legendre's notes.
+Following Gauss and Legendre, Chebyshev came along and proved that $ \pi(x) = \Theta(x) $,
+and provided extremely good constants. More specifically, Chebyshev proved that for 
+sufficiently large $ x $ we have that
+
+\[ 0.92 \frac{x}{\log x} \leq \pi(x) \leq 1.10 \frac{x}{\log x} \]
+
+In fact, Newman's short proof still uses Chebyshev's idea
+to first prove the upper bound for $ \pi(x) $, so we'll see the upper bound in a little bit.
+
+In 1859, Riemann came along and published the paper that introduces the
+Riemann Hypothesis in an 8-page paper. In the paper, Riemann also
+mentions the conjecture that $ \pi(x) < Li(x) $ (though it's not certain whether he believed it), which would later
+be disproved by Littlewood and capture Alan Turing's interest. More importantly,
+Riemann considers the Zeta function first introduced by Euler in 1737 
+with complex inputs and proves that proving the Prime Number Theorem
+reduces to showing that the Zeta function doesn't have any zeros with $ Re(s) = 1 $.
+
+In 1896, approximately a 100 year after Gauss's conjecture, Hadamard and de la Vallée Poussin
+independently proved the Prime Number Theorem using Riemann's proposed method. De la Vallée Poussin's
+initial solution was apparently incredibly messy, and he also admits that his solution was worse than
+Hadamard's. Over the next 100 years, the proofs would be improved with new tricks and observations, 
+and in 1980 Newman discovered the short proof that we present in this writeup.
+
+In 1949, Selberg and Erdös (there's a priority dispute, and Richard Borcherds thinks
+that Selberg wins this dispute since Erdös used her identity to prove the result, which is the
+key ingredient) proved the Prime Number Theorem using non-analytic methods.
+
+The famous Riemann Hypothesis is also related to the Prime Number Theorem in that the positions of the
+zeros of the zeta function would allow us to control the error term for $ \pi(x) $ better, but we'll
+get to this after proving the Prime Number Theorem.
+
+Let's now introduce some notation. Throughout, $ s $ will denote complex numbers with $ s = \sigma + it $ and $ \sigma, t \in \mathbb{R} $.
+Moreover, $ p $ will denote a prime and $ \rho $ will denote a zero of $ \zeta(s) $.
+When we use the notation 
+
+\[ \sum_{p}, \sum_{\rho}\]
+
+this means summing (or multiplying) over all primes or the zeros of $ \zeta $, respectively.
+
+There are many resources online that try to explain the Prime Number Theorem and many posts
+on MSE that clarify the proof. As I was exploring these resources myself to try to
+understand the Prime Number Theorem, I realized that (like me) most beginners
+had trouble understanding the so-called `Analytic Theorem' in Newman's paper. 
+
+Thus, in order to make this writeup somewhat unique and more useful to novice 
+mathematicians like me, I will start by focusing solely on this part of 
+Newman's proof and later move on to the actual proof.
+
+\newpage
+
+\section{The Only Hard Part in Newman's Proof}
+
+Well, the hardness stated in the title is clearly subjective. However, I don't understand
+this proof intuively and [Korevaar] states that this is essentially a poor-man's
+Ikehara-Wiener Theorem and was the major simplification in Newman's proof, so that's at least
+some evidence of hardness. Here is the statement:
+
+\begin{lemma}
+    Let $ f:[0,\infty) $ be a bounded and locally integrable function.
+    Define 
+
+    \[ g(z) := \int_{0}^{\infty} f(t) e^{-tz} dt, Re(z) > 0 \]
+
+    Assume $ g(z) $ extends holomorphically to $ Re(z) \geq 0 $.
+    Then, $ \int_{0}^{\infty} f(t) dt $ exists and equals to $ g(0) $.
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+
+
+\newpage
+
+
+\section{Chebsyhev's Upper Bound}
+
+In this section, we present Chebyshev's upper bound and introduce Chebyshev's function.
+
+
+
+\newpage
+
+\section{Newman's Proof}
+
+\newpage
+
+\section{Alan Turing and the Riemann Zeta Function}
+
+I come from a computer science background, and therefore I was fascinated to learn
+that Alan Turing also did some work on the Riemann Zeta function. In fact, one of
+his contributions involved developing the so-called Turing method to aid in the
+numerical verification that obviates the use of the Argument Principle sketched in
+the class.
+
+Recall that during class we argued that we can use the argument principle and the fact
+that the zeros of the Zeta function are symmetric across the critical line to verify
+the Riemann hypothesis numerically.
+
+The argument went as follows: use numerical methods to estimate the location
+of a zero, use the Argument Principle to integrate
+the ?? around the purported zero, and check whether the numerical integral
+gives a value close to $ 1 $. Even though numerical integration is imprecise,
+since the winding number is an integer, we can be certain that the zero is on
+the critical line, since otherwise we would have two zeros.
+
+Instead, Alan Turing proposed using the formula (that I don't really understand)
+
+\[ N(t) = 1 + \frac{1}{\pi} \theta(t) + S(t) \]
+
+where $N(t)$ counts the number of zeros in the critical strip with imaginary part 
+in $ [0,t] $ and  $ \theta(t) $ is a smooth function called the Riemann-Siegel theta function.
+Since $ N(t) $ isn't smooth and $ 1 + \frac{1}{\pi} \theta(t) $ is, $ S(t) $ should 
+also have jump discontinuities to catch up with $ N(t) $. Moreover, if $ S(t) $ jumps 
+by two at any point (unless the Zeta function has non-simple zeros, which, as stated in lecture,
+would be super surprising for reasons beyond me), we would gather that the zero was not on the
+critical line. I found this super interesting since it both pertained to something we talked about
+in lecture and Alan Turing!
+
+Another gem I found while looking into this is the following story: 
+Alan Turing apparently got a 40 pound grant from the Royal Society during his time
+in Cambridge to run computer simulations for 
+
+Here's a quote from his notes:
+
+
+So not only did Alan Turing not believe in the Riemann Hypothesis, he also believed that he
+could find a counterexample with a pretty small imaginary value! Alan Turing's belief is confirmed by his
+1953 paper, where he states
+
+
+ 
+\end{document}
