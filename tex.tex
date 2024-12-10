@@ -35,7 +35,7 @@
 
 \section{Introduction}
 
-The Prime Number Theorem (PNT) is one of the most celebrated theorems in mathematics. In this writeup,
+The Prime Number Theorem is one of the most celebrated theorems in mathematics. In this writeup,
 we look at some of the history of the Prime Number Theorem and review Newman's proof with a little bit 
 more detail and references to our class this quarter. At the end,
 I will give a brief overview of Alan Turing's relationship to the Riemann Hypothesis
@@ -47,36 +47,42 @@ The Prime Number Theorem states that $ \pi(x) \sim \frac{x}{\log x} $, where $\l
 Here, $ \sim $ means that \[ \lim_{x \to \infty} \frac{ \pi(x)}{x/ \log{x}} = 1 \]
 
 In other words, the Prime Number Theorem states that the $n$th prime will have size roughly $ n \log n $.
-In fact, Barkley Rosser proved in 1939 that the nth prime number is strictly greater than $ n \log n $.
+In fact, Barkley Rosser proved in 1939 that the nth prime number is strictly greater than $ n \log n $ \cite{rosser_n-th_1939}.
 
 The Prime Number Theorem was first conjectured by Gauss when he was around 15 (in fact, 
-he conjectured that $ \pi(x) \sim Li(x) $, where $ Li(x) $ is the \href{https://en.wikipedia.org/wiki/Logarithmic_integral_function}{logarithmic integral function}
-, which turns out to be a better approximation) 
+he conjectured that $ \pi(x) \sim Li(x) $, where $ Li(x) $ is the \href{https://en.wikipedia.org/wiki/Logarithmic_integral_function}{logarithmic integral function}, which turns out to be a better approximation) 
 using prime number tables compiled by Johann Heinrich Lambert, who is
-known for proving that $ \pi $ is irrational. Legendre, seemingly independently from Gauss,
+known for proving that $ \pi $ is irrational \cite{klyve_origin_2018} \cite{noauthor_histoire_nodate}. Legendre, seemingly independently from Gauss,
 guessed in 1808 that
 
 \[ \pi(x) \sim \frac{x}{\log x - A(x)} \]
 
-for some $ A(x) $ that tends to a constant as $ x $ goes to infinity. In fact,
-some sources state as 
+for some $ A(x) $ that tends to a constant as $ x $ goes to infinity \cite{bateman_hundred_1996}. In fact,
+earlier in the writing, Legendre even specifies this constant, stating 
 
 \[ \pi(x) \sim \frac{x}{\log x - 1.08366} \]
 
-instead, but no explanation for this constant has been found in Legendre's notes.
+instead \cite{bambah_centennial_2000}, but no explanation for this constant has been found in Legendre's notes.
 Following Gauss and Legendre, Chebyshev came along and proved that $ \pi(x) = \Theta(x) $,
-and provided extremely good constants. More specifically, Chebyshev proved that for 
+and provided extremely good constants. More specifically, Chebyshev \cite{bateman_hundred_1996} proved that for 
 sufficiently large $ x $ we have that
 
-\[ 0.92 \frac{x}{\log x} \leq \pi(x) \leq 1.10 \frac{x}{\log x} \]
+\[ 0.92 \frac{x}{\log x} \leq \pi(x) \leq 1.10 \frac{x}{\log x}. \]
 
-In fact, Newman's short proof still uses Chebyshev's idea
-to first prove the upper bound for $ \pi(x) $, so we'll see the upper bound in a little bit.
+In fact, Newman's short proof \cite{zagier_newmans_1997} still uses Chebyshev's upper bound
+(or at least the idea behind the upper bound). We'll skip the proof of the upper bound, because
+it doesn't relate to complex analysis and also because it isn't the interesting portion of the proof.
+You can see the upper bound in virtually every reference mentioned in this writeup, or \href{https://artofproblemsolving.com/wiki/index.php/Chebyshev_theta_function#Estimates_of_the_function}
+{this AoPS page}.
+
+Moreover, Chebyshev's arguments use elementary tricks using the binomial coefficients,
+so the `hardness' of the Prime Number Theorem is proving that the $ \pi(x) \sim \frac{x}{\log x} $,
+not $ \pi(x) = \Theta(\frac{x}{\log x}) $.
 
 In 1859, Riemann came along and published the paper that introduces the
-Riemann Hypothesis in an 8-page paper. In the paper, Riemann also
+Riemann Hypothesis in an 8-page paper \cite{wilkins_number_1998}. In the paper, Riemann also
 mentions the conjecture that $ \pi(x) < Li(x) $ (though it's not certain whether he believed it), which would later
-be disproved by Littlewood and capture Alan Turing's interest. More importantly,
+be disproved by Littlewood and capture Alan Turing's interest \cite{princetonacademics_andrew_2012} \cite{matiyasevich_riemann_2020} \cite{hejhal_alan_2012}. More importantly,
 Riemann considers the Zeta function first introduced by Euler in 1737 
 with complex inputs and proves that proving the Prime Number Theorem
 reduces to showing that the Zeta function doesn't have any zeros with $ Re(s) = 1 $.
@@ -84,16 +90,14 @@ reduces to showing that the Zeta function doesn't have any zeros with $ Re(s) = 
 In 1896, approximately a 100 year after Gauss's conjecture, Hadamard and de la Vallée Poussin
 independently proved the Prime Number Theorem using Riemann's proposed method. De la Vallée Poussin's
 initial solution was apparently incredibly messy, and he also admits that his solution was worse than
-Hadamard's. Over the next 100 years, the proofs would be improved with new tricks and observations, 
+Hadamard's \cite{bambah_centennial_2000}. Over the next 100 years, the proofs would be improved with new tricks and observations, 
 and in 1980 Newman discovered the short proof that we present in this writeup.
 
 In 1949, Selberg and Erdös (there's a priority dispute, and Richard Borcherds thinks
-that Selberg wins this dispute since Erdös used her identity to prove the result, which is the
-key ingredient) proved the Prime Number Theorem using non-analytic methods.
+that Selberg wins this dispute since Erdös used Selberg's identity to prove the result, which is the
+key ingredient, but this is obviously a subjective matter) proved the Prime Number Theorem using non-analytic methods \cite{bambah_centennial_2000} \cite{richard_e_borcherds_introduction_2022}.
 
-The famous Riemann Hypothesis is also related to the Prime Number Theorem in that the positions of the
-zeros of the zeta function would allow us to control the error term for $ \pi(x) $ better, but we'll
-get to this after proving the Prime Number Theorem.
+\subsection{Notation}
 
 Let's now introduce some notation. Throughout, $ s $ will denote complex numbers with $ s = \sigma + it $ and $ \sigma, t \in \mathbb{R} $.
 Moreover, $ p $ will denote a prime and $ \rho $ will denote a zero of $ \zeta(s) $.
@@ -101,28 +105,122 @@ When we use the notation
 
 \[ \sum_{p}, \sum_{\rho}\]
 
-this means summing (or multiplying) over all primes or the zeros of $ \zeta $, respectively.
+this means summing (or multiplying) over all primes or the zeros of $ \zeta $, respectively. We'll define the zeta function,
+Chebyshev function, \ldots as we need them throughout the writeup to make it more natural and less boring.
+
+\subsection{Overview}
 
 There are many resources online that try to explain the Prime Number Theorem and many posts
-on MSE that clarify the proof. As I was exploring these resources myself to try to
+on MSE that try to clarify the proof \cite{bandeira_complex_nodate} \cite{avi_why_2015} \cite{coffee_table_what_2018}. 
+As I was exploring these resources myself to try to
 understand the Prime Number Theorem, I realized that (like me) most beginners
-had trouble understanding the so-called `Analytic Theorem' in Newman's paper. 
+had trouble understanding the so-called `Analytic Theorem' in Newman's paper . 
 
-Thus, in order to make this writeup somewhat unique and more useful to novice 
-mathematicians like me, I will start by focusing solely on this part of 
-Newman's proof and later move on to the actual proof.
+WRITE THE OVERVIEW AFTER YOU WRITE THE DOCUMENT
 
 \newpage
 
-\section{The Only Hard Part in Newman's Proof}
+\section{The Basic Objects and Their Properties}
 
-Well, the hardness stated in the title is clearly subjective. However, I don't understand
-this proof intuively and [Korevaar] states that this is essentially a poor-man's
-Ikehara-Wiener Theorem and was the major simplification in Newman's proof, so that's at least
-some evidence of hardness. Here is the statement:
+Let's now define the star of the show, the Riemann Zeta function and
+try to understand how it relates to prime numbers.
+
+Let \[ \zeta(s) := \sum_{n = 1}^{\infty} \frac{1}{n^{s}} .\] 
+
+Notice that for $ s $ with $ Re(s) > 1 $ we have that the infinite series is absolutely
+summable and therefore convergent. This is because if the infinite series is absolutely
+summable, then the real and imaginary parts are absolutely summable, which implies that
+the real and imaginary parts of the series converge, which implies that the complex-valued
+sequence of partial sums converges. Also notice that $ \zeta(s) $ has a simple pole
+at $ s = 1 $ since the harmonic series diverges. 
+
+Let us now immediately relate this function to primes by proving Euler's Identity:
 
 \begin{lemma}
-    Let $ f:[0,\infty) $ be a bounded and locally integrable function.
+    For all $ s \in \C $ such that $ Re(s) > 1 $, we have that $ \zeta(s) = \prod_{p} \frac{1}{1 - p^{-s}} $.
+\end{lemma}
+
+\begin{proof}
+    
+\end{proof}
+
+Notice that the product formula also implies that $ \zeta(s) \neq 0 $ if $ Re(s) > 1 $ since
+none of the terms in the infinite product is zero.
+
+Let us consider the logarithmic derivative of $ \zeta(s) $.
+Recall that in class, we mentioned that the log derivative of a finite product is the sum of the
+log derivative of the individual terms. This can in fact be extended to infinite products
+by considering infinite product as infinite sums of logarithms. Taking this for granted,
+let's now see what the derivative of a single term looks like.
+
+
+\[ \frac{d}{ds} (1 - p^{-s})^{-1} = - (1 - p^{-s})^{-2} \log(p) p^{-s}\]
+
+Thus, 
+
+\[ \frac{\frac{d}{ds} (1 - p^{-s})^{-1}}{(1 - p^{-s})^{-1}} = \frac{\log(p) p^{-s}}{1 - p^{-s}} = - \frac{\log (p)}{p^{s} - 1} \]
+
+Then, 
+
+\[ \frac{\frac{d}{ds} \zeta(s)}{\zeta(s)} = - \sum_{p} \frac{\log (p)}{p^{s} - 1} \]
+
+
+Now, I'll first wave my hands for two paragraphs and give an intuitive argument
+using the residue theorem, and then I'll compare this argument to a rigorous
+but super counterintuitive proof.
+
+Notice that the right-hand side of this equation is counting the number of primes, albeit
+weighted a in a little bit of a weird way. However, we can also see the right-hand side the as
+`essentially' the following infinite series (notice that I've already starting waving my hands
+by omitting the $ -1 $ from the denominator):
+
+\[ \sum_{n} \frac{\Lambda(n)}{n^{s}}, \]
+
+where $ \Lambda(n) = \log p $ if $ n $ is the power of a prime number and $ 0 $ otherwise.
+
+This is called a \textbf{Dirichlet series} and $ \Lambda(n) $ is called the \textbf{von Mangoldt function}.
+In fact, we'll call the function representing this series $ \Phi(s) $.
+
+It turns out that in 1896, Mellin figured out how to get back the growth of a Dirichlet series
+in terms of its transform, the so called Mellin transform. Then, Wiener and Ikenara
+took this idea and proved the following theorem in 1932 \cite{korevaar_newmans_1982}:
+
+\begin{theorem}
+    Let $ f(x) $ be non-negative and nondecreasing on $ [1,\infty) $ such that the Merlin
+    transform
+
+    \[ g_{0}(s) = - f(1) + s \int_{1}^{\infty} f(x) x^{-s - 1} dx \]
+    
+    exists for $ Re(s) > 1 $. Suppose that for some constant $ c $, the function 
+    \[ g_{0}(s) - \frac{c}{s-1} \]
+
+    has a continuous extension to the closed half-plane $ Re(s) \geq 1 $. Then, $ \frac{f(x)}{x} \to 1 $
+    as $ x \to \infty $.
+\end{theorem}
+
+I'm just putting this statement here for intuition, so I'm not going to explain this statement in detail.
+All I want to say is that it intuitively makes sense that $ \Phi(s) $ will play the role of $ g(s) $
+in this statement and $ \Lambda(x) $ will play the role of $ f(x) $. And, you guessed it, $ c $ will
+turn out to be $ 1 $.
+
+We'll prove an easier version of this statement (\cite{korevaar_newmans_1982} calls it `A Poor Man's Ikehara-Wiener Theorem')
+which is sufficient to prove the Prime Number Theorem.
+
+But now, notice that in order to use this theorem, we need to show that $ \Phi(s) - \frac{1}{s - 1} $
+can be continued analytically on the real line. This is where the crucial observation of Riemann
+comes in. Showing that $ \Phi(s) - \frac{1}{s - 1} $ is analytic on $ Re(s) \geq 1 $, using the Residue
+Theorem, is equivalent to proving that $ \zeta(s) \neq 0 $ for any $ s $ with $ Re(s) = 1 $.
+Riemann stated this in his 1859 paper, but couldn't prove this result.
+
+To sum it up in order to understand the coefficients of a Dirichlet series, we need to integrate
+the Dirichlet series. But since this particular Dirichlet series turns out to be the 
+logarithmic derivative of the Zeta function, it suffices to understand integrals of the
+logarithmic derivative Riemann Zeta function, where we can use the Residue theorem.
+
+Here's the statement we'll prove instead of the Ikehara-Wiener Theorem:
+
+\begin{lemma}
+    Let $ f:[0,\infty) \xrightarrow{} \C$ be a bounded and locally integrable function.
     Define 
 
     \[ g(z) := \int_{0}^{\infty} f(t) e^{-tz} dt, Re(z) > 0 \]
@@ -130,24 +228,29 @@ some evidence of hardness. Here is the statement:
     Assume $ g(z) $ extends holomorphically to $ Re(z) \geq 0 $.
     Then, $ \int_{0}^{\infty} f(t) dt $ exists and equals to $ g(0) $.
 \end{lemma}
-\begin{proof}
-    
-\end{proof}
 
+\begin{lemma}
+    If $ \nu(x) \sim x $, $ \pi(x) \sim x \log x $.
+\end{lemma}
 
+Thus, if we prove this lemma, we reduce the prime number theorem to proving $ \nu(x) \sim x $.
+
+In order to do this, we'll show that the integral 
+
+\[ \int_{1}^{\infty} \frac{\nu(x) - x}{x^{2}} \]
+
+converges. Let's see why this would intuitively be sufficient. By Chebyshev's upper bound,
+we know that $ \nu(x) = O(x) $. Now, notice that if $ \nu(x) $ wasn't exactly approaching $ x $,
+the above integral would turn into the harmonic series and would blow up to infinity. Thus, this is intuitively
+sufficient to show that $ \nu(x) $ acts exactly like $ x $. Let's now prove this rigorously.
 
 \newpage
 
 
-\section{Chebsyhev's Upper Bound}
 
-In this section, we present Chebyshev's upper bound and introduce Chebyshev's function.
-
+\section{Convergence of the Integral and the Zeros of the Zeta Function}
 
 
-\newpage
-
-\section{Newman's Proof}
 
 \newpage
 
@@ -194,6 +297,22 @@ So not only did Alan Turing not believe in the Riemann Hypothesis, he also belie
 could find a counterexample with a pretty small imaginary value! Alan Turing's belief is confirmed by his
 1953 paper, where he states
 
+\newpage
+
+$ \pi(x) $ is a bit unwieldy, so people have developed under functions to examine
+$ \pi(x) $ that act a bit nicer and exhibit the `same' behavior asymptotically. Two
+functions we'll use are $ \Phi(x) $, also called the , and $ \nu(x) $, also called
+Chebyshev's theta function. Here are the definitions:
+
+\[ \Phi(s) = \sum_{p \leq x} \frac{\log p }{p^{s}}\]
+
+\[ \nu(x) = \sum_{p \leq x} \log p \]
+
+
+% \[ \{ M^{-1}\phi (x) \} (x) = \frac{1}{2 \pi i } \int_{c - i \infty}^{c + i \infty} x^{-s} \phi(s) ds \]
+
+\bibliographystyle{plainurl} 
+\bibliography{246a}   
 
  
 \end{document}

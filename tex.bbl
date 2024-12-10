@@ -1,0 +1,87 @@
+\begin{thebibliography}{10}
+
+\bibitem{noauthor_histoire_nodate}
+Histoire de l'{Academie} {Royale} des {Sciences} et des {Belles} {Lettres}. {Année} 1745-1769 1761.
+\newblock URL: \url{https://hdl.handle.net/2027/nyp.33433009864251?urlappend=%3Bseq=303}.
+
+\bibitem{bambah_centennial_2000}
+Tom~M. Apostol.
+\newblock A {Centennial} {History} of the {Prime} {Number} {Theorem}.
+\newblock In R.~P. Bambah, V.~C. Dumir, and R.~J. Hans-Gill, editors, {\em Number {Theory}}, pages 1--14. Birkhäuser Basel, Basel, 2000.
+\newblock URL: \url{http://link.springer.com/10.1007/978-3-0348-7023-8_1}, \href {https://doi.org/10.1007/978-3-0348-7023-8_1} {\path{doi:10.1007/978-3-0348-7023-8_1}}.
+
+\bibitem{avi_why_2015}
+Avi.
+\newblock Why is {Newman}'s {Analytic} {Theorem} neccessary, June 2015.
+\newblock URL: \url{https://math.stackexchange.com/q/1313346/1048984}.
+
+\bibitem{bandeira_complex_nodate}
+Afonso~S. Bandeira.
+\newblock Complex {Analysis} ({Fall} 2020), {Afonso} {S}. {Bandeira}, {ETH} {Zurich}.
+\newblock URL: \url{https://www.youtube.com/}.
+
+\bibitem{bateman_hundred_1996}
+Paul~T. Bateman and Harold~G. Diamond.
+\newblock A {Hundred} {Years} of {Prime} {Numbers}.
+\newblock {\em The American Mathematical Monthly}, 103(9):729--741, November 1996.
+\newblock URL: \url{https://www.tandfonline.com/doi/full/10.1080/00029890.1996.12004813}, \href {https://doi.org/10.1080/00029890.1996.12004813} {\path{doi:10.1080/00029890.1996.12004813}}.
+
+\bibitem{coffee_table_what_2018}
+Coffee\_Table.
+\newblock What complex analysis must {I} know to understand {D}.{J}. {Newman}'s proof of the {Prime} {Number} {Theorem}?, October 2018.
+\newblock URL: \url{https://math.stackexchange.com/q/2960005/1048984}.
+
+\bibitem{hejhal_alan_2012}
+Dennis~A. Hejhal and Andrew~M. Odlyzko.
+\newblock Alan {Turing} and the {Riemann} zeta function.
+\newblock {\em Alan Turing: His Work and Impact}, pages 265--279, 2012.
+\newblock URL: \url{https://www-users.cse.umn.edu/~odlyzko/doc/turing.zeta.pdf}.
+
+\bibitem{klyve_origin_2018}
+Dominic Klyve.
+\newblock The {Origin} of the {Prime} {Number} {Theorem}.
+\newblock {\em Number Theory}, October 2018.
+\newblock URL: \url{https://digitalcommons.ursinus.edu/triumphs_number/9}.
+
+\bibitem{korevaar_newmans_1982}
+Jacob Korevaar.
+\newblock On {Newman}’s quick way to the prime number theorem.
+\newblock {\em The Mathematical Intelligencer}, 4(3):108--115, 1982.
+\newblock Publisher: Springer-Verlag New York.
+\newblock URL: \url{https://staff.fnwi.uva.nl/j.korevaar/KorNewmanPNT.pdf}.
+
+\bibitem{matiyasevich_riemann_2020}
+Yu. Matiyasevich.
+\newblock The {Riemann} {Hypothesis} in computer science.
+\newblock {\em Theoretical Computer Science}, 807:257--265, February 2020.
+\newblock URL: \url{https://www.sciencedirect.com/science/article/pii/S0304397519304633}, \href {https://doi.org/10.1016/j.tcs.2019.07.028} {\path{doi:10.1016/j.tcs.2019.07.028}}.
+
+\bibitem{princetonacademics_andrew_2012}
+{princetonacademics}.
+\newblock Andrew {Odlyzko}: {Turing} and the {Riemann} zeta function, August 2012.
+\newblock URL: \url{https://www.youtube.com/watch?v=pQS7X_8iTCA}.
+
+\bibitem{richard_e_borcherds_introduction_2022}
+{Richard E Borcherds}.
+\newblock Introduction to number theory lecture 47. {The} prime number theorem, April 2022.
+\newblock URL: \url{https://www.youtube.com/watch?v=TxuIK_Rg0lI}.
+
+\bibitem{rosser_n-th_1939}
+Barkley Rosser.
+\newblock The n-th {Prime} is {Greater} than nlogn.
+\newblock {\em Proceedings of the London Mathematical Society}, s2-45(1):21--44, 1939.
+\newblock \_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1112/plms/s2-45.1.21.
+\newblock URL: \url{https://onlinelibrary.wiley.com/doi/abs/10.1112/plms/s2-45.1.21}, \href {https://doi.org/10.1112/plms/s2-45.1.21} {\path{doi:10.1112/plms/s2-45.1.21}}.
+
+\bibitem{wilkins_number_1998}
+D.~R. Wilkins.
+\newblock On the number of prime numbers less than a given quantity, 1998.
+
+\bibitem{zagier_newmans_1997}
+D.~Zagier.
+\newblock Newman's {Short} {Proof} of the {Prime} {Number} {Theorem}.
+\newblock {\em The American Mathematical Monthly}, 104(8):705--708, 1997.
+\newblock Publisher: Mathematical Association of America.
+\newblock URL: \url{https://www.jstor.org/stable/2975232}, \href {https://doi.org/10.2307/2975232} {\path{doi:10.2307/2975232}}.
+
+\end{thebibliography}
