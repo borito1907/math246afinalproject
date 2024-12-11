@@ -58,7 +58,7 @@ guessed in 1808 that
 \[ \pi(x) \sim \frac{x}{\log x - A(x)} \]
 
 for some $ A(x) $ that tends to a constant as $ x $ goes to infinity \cite{bateman_hundred_1996}. In fact,
-earlier in the writing, Legendre even specifies this constant, stating 
+earlier in his writing, Legendre even specifies this constant, stating 
 
 \[ \pi(x) \sim \frac{x}{\log x - 1.08366} \]
 
@@ -97,28 +97,29 @@ In 1949, Selberg and Erdös (there's a priority dispute, and Richard Borcherds t
 that Selberg wins this dispute since Erdös used Selberg's identity to prove the result, which is the
 key ingredient, but this is obviously a subjective matter) proved the Prime Number Theorem using non-analytic methods \cite{bambah_centennial_2000} \cite{richard_e_borcherds_introduction_2022}.
 
-\subsection{Notation}
+\subsection{Overview}
 
-Let's now introduce some notation. Throughout, $ s $ will denote complex numbers with $ s = \sigma + it $ and $ \sigma, t \in \mathbb{R} $.
+Let's now introduce some notation. Throughout, $ s $ will denote a complex number with $ s = \sigma + it $ and $ \sigma, t \in \mathbb{R} $.
 Moreover, $ p $ will denote a prime and $ \rho $ will denote a zero of $ \zeta(s) $.
 When we use the notation 
 
 \[ \sum_{p}, \sum_{\rho}\]
 
-this means summing (or multiplying) over all primes or the zeros of $ \zeta $, respectively. We'll define the zeta function,
-Chebyshev function, \ldots as we need them throughout the writeup to make it more natural and less boring.
-
-\subsection{Overview}
-
+this means summing (or multiplying) over all primes or the zeros of $ \zeta $, respectively.
 There are many resources online that try to explain the Prime Number Theorem and many posts
 on MSE that try to clarify the proof \cite{bandeira_complex_nodate} \cite{avi_why_2015} \cite{coffee_table_what_2018}. 
+
 As I was exploring these resources myself to try to
 understand the Prime Number Theorem, I realized that (like me) most beginners
-had trouble understanding the so-called `Analytic Theorem' in Newman's paper . 
+had trouble understanding the so-called `Analytic Theorem' in Newman's paper.
 
-WRITE THE OVERVIEW AFTER YOU WRITE THE DOCUMENT
+Thus, after defining the zeta function and proving Euler's Identity, I'll
+make some handwavy arguments relating the Analytic Theorem in Newman's paper
+to the Ikehara-Wiener Theorem, and see how the Analytic Theorem in Newman's paper
+is a simplification of this theorem for which we can develop some intuition.
 
-\newpage
+Then, I will tie this back to the Riemann Zeta function, thus reducing the proof
+to proving certain properties of the Zeta function. 
 
 \section{The Basic Objects and Their Properties}
 
@@ -229,6 +230,27 @@ Here's the statement we'll prove instead of the Ikehara-Wiener Theorem:
     Then, $ \int_{0}^{\infty} f(t) dt $ exists and equals to $ g(0) $.
 \end{lemma}
 
+To not break up the flow of the argument, I'll defer the proof of this statement to the appendix.
+However, notice the similarities between this theorem and the Ikehara-Wiener Theorem.
+In both theorems, we understand the asymptotic behavior of $ f(x) $ by using the
+niceness properties of a Fourier-like integral. In fact, in our proof, we won't even need
+the value $ g(0) $: convergence will be sufficient to deduce the prime number theorem.
+
+Let's now start the proof.
+
+\section{Overview of the Proof}
+
+Let $ \nu(x) $, which is sometimes called the \textbf{Chebyshev's theta function},
+be defined as 
+
+\[ \nu(x) = \sum_{p \leq x} \log p \]
+
+Intuitively, this function
+counts each prime and weights them according to the inverse of their density.
+Thus, we expect $ \nu(x) \sim x $ if we believe the Prime Number Theorem.
+In fact, this turns out to imply the Prime Number Theorem. I believe that this
+is kind of clear, so I have relegated this implication to the appendix.
+
 \begin{lemma}
     If $ \nu(x) \sim x $, $ \pi(x) \sim x \log x $.
 \end{lemma}
@@ -242,17 +264,35 @@ In order to do this, we'll show that the integral
 converges. Let's see why this would intuitively be sufficient. By Chebyshev's upper bound,
 we know that $ \nu(x) = O(x) $. Now, notice that if $ \nu(x) $ wasn't exactly approaching $ x $,
 the above integral would turn into the harmonic series and would blow up to infinity. Thus, this is intuitively
-sufficient to show that $ \nu(x) $ acts exactly like $ x $. Let's now prove this rigorously.
+sufficient to show that $ \nu(x) $ acts exactly like $ x $. In order to prove that this
+integral is convergent, we'll use the Poor Man's Ikehara-Wiener Theorem!
 
-\newpage
+More specifically, we 'll pick $ f(t) := \nu(e^{t}) e^{-t} -1 $ and 
+\[ g(z) = \frac{\Phi(z+1)}{z+1} - \frac{1}{z} \]
+
+Well, these look like they have absolutely nothing to do with $ \frac{\nu(x) - x}{x^{2}} $,
+but some trickery with integrals shows that they are actually equivalent. This
+is done in $ \ref{lem:newman_v} $.
+
+Thus, to apply the theorem, we'll need $ f(t) $ to be locally bounded 
+and $ g(z) $ to be analytic on $ Re(z) \geq 0 $.
+The fact that $ f(t) $ is bounded follows from the Chebyshev's upper bound,
+i.e. from $ \nu(x) = O(x) $. The analyticity of $ g(z) $ is equivalent to proving
+that the Zeta function has no zeros with $ Re(s) = 1 $, as per the Residue Theorem
+intuition. The formal proof is given in \ref{lem:newman_v_conditions}.
 
 
 
-\section{Convergence of the Integral and the Zeros of the Zeta Function}
+Thus, we have reduced the proof of the Prime Number Theorem to meromorphically
+extending the Zeta function to the right-half plane and showing that it doesn't
+have any zeros with $ Re(s) = 1 $. We now prove these to establish the prime number theorem.
 
+Since our argument was a bit convoluted, I also strongly encourage the reader to compare
+the flow of this argument to Newman's paper. (DO I? I'M NOT SURE IF I DO. COME BACK
+TO THIS AT THE END.)
 
+\section{Properties of the Zeta Function}
 
-\newpage
 
 \section{Alan Turing and the Riemann Zeta Function}
 
@@ -306,7 +346,9 @@ Chebyshev's theta function. Here are the definitions:
 
 \[ \Phi(s) = \sum_{p \leq x} \frac{\log p }{p^{s}}\]
 
-\[ \nu(x) = \sum_{p \leq x} \log p \]
+
+
+
 
 
 % \[ \{ M^{-1}\phi (x) \} (x) = \frac{1}{2 \pi i } \int_{c - i \infty}^{c + i \infty} x^{-s} \phi(s) ds \]
@@ -314,5 +356,40 @@ Chebyshev's theta function. Here are the definitions:
 \bibliographystyle{plainurl} 
 \bibliography{246a}   
 
- 
+\appendix
+
+\section{A Poor Man's Ikehara-Wiener Theorem}
+
+\section{Relationship of $ \Phi(s) $ to $ \frac{\zeta(s)^{\prime}}{\zeta(s)}$}
+
+\begin{lemma}\label{lem:newman_v}
+
+\end{lemma}
+
+
+
+\begin{lemma}\label{lem:newman_v_conditions}
+    $ \frac{\Phi(s + 1)}{s + 1} - \frac{1}{s} $ is analytic on 
+    $ Re(s) \geq 0 $ if and only if $ \zeta(s) $ has no zeros
+    with $ Re(s) = 1 $.
+\end{lemma}
+\begin{proof}
+    Let's first prove the statement without the denominator.
+
+    Notice that
+
+    \[ \frac{\zeta(s)^{\prime}}{\zeta(s)} - \Phi(s) = \sum_{p} \log(p) (\frac{1}{p^{s} - 1} - \frac{1}{p^{s}}) \]
+    
+    Rearranging, we get
+    
+    \[ \frac{\zeta(s)^{\prime}}{\zeta(s)} = \Phi(s) + \log(p)[\frac{1}{p^{s}(p^{s} - 1)}] \]
+    
+    More specifically, let $ x = e^{t} $
+    and notice that 
+    
+    $ f(x) = \frac{\nu(x)}{x} - 1 $, so $ f(x) \leq cx - 1 $ for some $ c > 0 $.
+\end{proof}
+
+
+
 \end{document}
