@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex tex"] 1733877260 "tex.aux" "tex.bbl" "tex" 1733877262 0
-  "./246a.bib" 1733814479 15725 d64a2b9181305630870498a39e8f55f4 ""
+["bibtex tex"] 1733896678 "tex.aux" "tex.bbl" "tex" 1733896679 0
+  "./246a.bib" 1733894054 15725 d64a2b9181305630870498a39e8f55f4 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/urlbst/plainurl.bst" 1675116457 33495 46cfb45e24a877059f9f7e142c7fc61c ""
-  "tex.aux" 1733877262 2925 612765697b2cdc3816e9e3418db8664f "pdflatex"
+  "tex.aux" 1733896678 3536 5ea268e978a15760415c240901fa8eb9 "pdflatex"
   (generated)
   "tex.bbl"
   "tex.blg"
   (rewritten before read)
-["pdflatex"] 1733877262 "/Users/boranerol/Desktop/complex_analysis/math246a_final_project/final_project_tex/tex.tex" "tex.pdf" "tex" 1733877262 0
-  "/Users/boranerol/Desktop/complex_analysis/math246a_final_project/final_project_tex/tex.tex" 1733877261 18569 6e3b92b5fdcdd5592e225dc2efa776ca ""
+["pdflatex"] 1733896678 "/Users/boranerol/Desktop/complex_analysis/math246a_final_project/final_project_tex/tex.tex" "tex.pdf" "tex" 1733896679 0
+  "/Users/boranerol/Desktop/complex_analysis/math246a_final_project/final_project_tex/tex.tex" 1733896677 31904 9bfd5e16e9dec9bf6a61a5b04b613f14 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -50,6 +50,7 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1248133631 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb" 1248133631 30457 bc0868ebece724ed7c3d37e3d9bff7bd ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -112,10 +113,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1693882804 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1693882787 7883467 b3d38929f290a1d66bf476f72b33eddf ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "tex.aux" 1733877262 2925 612765697b2cdc3816e9e3418db8664f "pdflatex"
-  "tex.bbl" 1733877260 4268 2aca3d7021f06230c0a9bb317e6b8744 "bibtex tex"
-  "tex.out" 1733877262 1555 a5e147ed39257bcfd896ef908e3e1162 "pdflatex"
-  "tex.tex" 1733877261 18569 6e3b92b5fdcdd5592e225dc2efa776ca ""
+  "tex.aux" 1733896678 3536 5ea268e978a15760415c240901fa8eb9 "pdflatex"
+  "tex.bbl" 1733896678 4455 805402a631985abc88608d9bf779ebb2 "bibtex tex"
+  "tex.out" 1733896678 1630 3426262a35d8225f3a56e85281d0a658 "pdflatex"
+  "tex.tex" 1733896677 31904 9bfd5e16e9dec9bf6a61a5b04b613f14 ""
   (generated)
   "tex.aux"
   "tex.log"

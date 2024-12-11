@@ -9,45 +9,47 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: 246a.bib
 Warning--to sort, need author or key in noauthor_histoire_nodate
-You've used 15 entries,
+Warning--empty publisher in shakarchi_complex_nodate
+Warning--empty year in shakarchi_complex_nodate
+You've used 16 entries,
             2943 wiz_defined-function locations,
-            736 strings with 8041 characters,
-and the built_in function-call counts, 6278 in all, are:
-= -- 691
-> -- 144
+            740 strings with 8174 characters,
+and the built_in function-call counts, 6612 in all, are:
+= -- 721
+> -- 152
 < -- 2
-+ -- 55
-- -- 35
-* -- 305
-:= -- 845
-add.period$ -- 55
-call.type$ -- 15
-change.case$ -- 61
++ -- 58
+- -- 37
+* -- 321
+:= -- 889
+add.period$ -- 58
+call.type$ -- 16
+change.case$ -- 64
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 182
-empty$ -- 681
-format.name$ -- 35
-if$ -- 1705
+cite$ -- 19
+duplicate$ -- 196
+empty$ -- 721
+format.name$ -- 37
+if$ -- 1796
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 8
-newline$ -- 87
-num.names$ -- 30
-pop$ -- 164
+int.to.str$ -- 16
+missing$ -- 10
+newline$ -- 92
+num.names$ -- 32
+pop$ -- 180
 preamble$ -- 1
-purify$ -- 46
+purify$ -- 49
 quote$ -- 0
-skip$ -- 484
+skip$ -- 507
 stack$ -- 0
-substring$ -- 260
-swap$ -- 39
+substring$ -- 265
+swap$ -- 40
 text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
-warning$ -- 1
-while$ -- 45
-width$ -- 17
-write$ -- 182
-(There was 1 warning)
+type$ -- 62
+warning$ -- 3
+while$ -- 47
+width$ -- 18
+write$ -- 191
+(There were 3 warnings)
