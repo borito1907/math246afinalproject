@@ -47,11 +47,12 @@ The Prime Number Theorem states that $ \pi(x) \sim \frac{x}{\log x} $, where $\l
 Here, $ \sim $ means that \[ \lim_{x \to \infty} \frac{ \pi(x)}{x/ \log{x}} = 1 \]
 
 In other words, the Prime Number Theorem states that the $n$th prime will have size roughly $ n \log n $.
-In fact, Barkley Rosser proved in 1939 that the nth prime number is strictly greater than $ n \log n $ \cite{rosser_n-th_1939}.
+In fact, Barkley Rosser proved in 1939 that the $n$th prime number is strictly greater than $ n \log n $ \cite{rosser_n-th_1939}.
 
-The Prime Number Theorem was first conjectured by Gauss when he was around 15 (in fact, 
-he conjectured that $ \pi(x) \sim Li(x) $, where $ Li(x) $ is the \href{https://en.wikipedia.org/wiki/Logarithmic_integral_function}{logarithmic integral function}, which turns out to be a better approximation) 
-using prime number tables compiled by Johann Heinrich Lambert, who is
+The Prime Number Theorem was first conjectured by Gauss when he was around 15. In fact, 
+Gauss conjectured that $ \pi(x) \sim \text{Li}(x) $, where $ \text{Li}(x) $ is the \href{https://en.wikipedia.org/wiki/Logarithmic_integral_function}{logarithmic integral function}, 
+which turns out to be a better approximation. 
+His guess was based on prime number tables compiled by Johann Heinrich Lambert, who is
 known for proving that $ \pi $ is irrational \cite{klyve_origin_2018} \cite{noauthor_histoire_nodate}. Legendre, seemingly independently from Gauss,
 guessed in 1808 that
 
@@ -64,13 +65,13 @@ earlier in his writing, Legendre even specifies this constant, stating
 
 instead \cite{bambah_centennial_2000}, but no explanation for this constant has been found in Legendre's notes.
 Following Gauss and Legendre, Chebyshev came along and proved that $ \pi(x) = \Theta(x) $,
-and provided extremely good constants. More specifically, Chebyshev \cite{bateman_hundred_1996} proved that for 
+and provided extremely good constants. Precisely, Chebyshev \cite{bateman_hundred_1996} proved that for 
 sufficiently large $ x $ we have that
 
 \[ 0.92 \frac{x}{\log x} \leq \pi(x) \leq 1.10 \frac{x}{\log x}. \]
 
 In fact, Newman's short proof \cite{zagier_newmans_1997} still uses Chebyshev's upper bound
-(or at least the idea behind the upper bound). We'll skip the proof of the upper bound, because
+(or at least a very rough version of it). We'll skip the proof of the upper bound, because
 it doesn't relate to complex analysis and also because it isn't the interesting portion of the proof.
 You can see the upper bound in virtually every reference mentioned in this writeup, or \href{https://artofproblemsolving.com/wiki/index.php/Chebyshev_theta_function#Estimates_of_the_function}
 {this AoPS page}.
@@ -81,14 +82,14 @@ not $ \pi(x) = \Theta(\frac{x}{\log x}) $.
 
 In 1859, Riemann came along and published the paper that introduces the
 Riemann Hypothesis in an 8-page paper \cite{wilkins_number_1998}. In the paper, Riemann also
-mentions the conjecture that $ \pi(x) < Li(x) $ (though it's not certain whether he believed it), which would later
+mentions the conjecture that $ \pi(x) < \text{Li}(x) $ (though it's not clear whether he believed it), which would later
 be disproved by Littlewood and capture Alan Turing's interest \cite{princetonacademics_andrew_2012} \cite{matiyasevich_riemann_2020} \cite{hejhal_alan_2012}. More importantly,
-Riemann considers the Zeta function first introduced by Euler in 1737 
+Riemann considers the Zeta function, first introduced by Euler in 1737, 
 with complex inputs and proves that proving the Prime Number Theorem
 reduces to showing that the Zeta function doesn't have any zeros with $ Re(s) = 1 $.
 
 In 1896, approximately a 100 year after Gauss's conjecture, Hadamard and de la Vallée Poussin
-independently proved the Prime Number Theorem using Riemann's proposed method. De la Vallée Poussin's
+independently proved the Prime Number Theorem using Riemann's proposed strategy. De la Vallée Poussin's
 initial solution was apparently incredibly messy, and he also admits that his solution was worse than
 Hadamard's \cite{bambah_centennial_2000}. Over the next 100 years, the proofs would be improved with new tricks and observations, 
 and in 1980 Newman discovered the short proof that we present in this writeup.
@@ -114,7 +115,7 @@ As I was exploring these resources myself to try to
 understand the Prime Number Theorem, I realized that (like me) most beginners
 had trouble understanding the so-called `Analytic Theorem' in Newman's paper.
 
-Thus, after defining the Zeta function and proving Euler's Identity, I'll
+Thus, after defining the Zeta function and proving Euler's product formula, I'll
 make some handwavy arguments relating the Analytic Theorem in Newman's paper
 to the Ikehara-Wiener Theorem, and see how the Analytic Theorem in Newman's paper
 is a simplification of this theorem for which we can develop some intuition. I hope these
@@ -139,7 +140,7 @@ the real and imaginary parts of the series converge, which implies that the comp
 sequence of partial sums converges. Also notice that $ \zeta(s) $ has a simple pole
 at $ s = 1 $ since the harmonic series diverges. 
 
-Let us now immediately relate this function to primes by proving Euler's Identity:
+Let us now immediately relate this function to primes by proving Euler's product formula:
 
 \begin{lemma}
     For all $ s \in \C $ such that $ Re(s) > 1 $, we have that $ \zeta(s) = \prod_{p} \frac{1}{1 - p^{-s}} $.
@@ -152,9 +153,10 @@ Let us now immediately relate this function to primes by proving Euler's Identit
 
     Now, notice that
 
-    \[ \lvert \zeta(s) - \prod_{p \leq q} \frac{1}{1 - p^{-s}} \rvert < \sum_{n = q + 1}^{\sum} \frac{1}{n^{\sigma}} \]
+    \[ \lvert \zeta(s) - \prod_{p \leq q} \frac{1}{1 - p^{-s}} \rvert < \sum_{n = q + 1}^{\infty} \frac{1}{n^{\sigma}} \]
 
-    since every $ q $ is a product of primes each of which is less than $ q $.
+    since every $ q $ is a product of primes each of which is less than $ q $, and this product decomposition
+    is unique by the Fundamental Theorem of Arithmetic.
 
     Taking $ q \to \infty $ produces the desired result.
 \end{proof}
@@ -195,9 +197,11 @@ where $ \Lambda(n) = \log p $ if $ n $ is the power of a prime number and $ 0 $ 
 
 This is called a \textbf{Dirichlet series} and $ \Lambda(n) $ is called the \textbf{von Mangoldt function}.
 
-It turns out that in 1896, Mellin figured out how to get back the growth of a Dirichlet series
-in terms of its transform, the so called Mellin transform. Then, Wiener and Ikenara
-took this idea and proved the following theorem in 1932 \cite{korevaar_newmans_1982}:
+It turns out that in 1896, Mellin figured out how to get back the growth of the coefficients
+of a Dirichlet series in terms of its transform, the so called Mellin transform. I don't understand
+this result, but I'm willing to believe it based on previous things I've seen with the Fourier transform.
+Anyway, Wiener and Ikenara certain understood this result, 
+and proved the following theorem in 1932 \cite{korevaar_newmans_1982}:
 
 \begin{theorem}
     Let $ f(x) $ be non-negative and nondecreasing on $ [1,\infty) $ such that the Merlin
@@ -216,16 +220,16 @@ I'm just putting this statement here for intuition, so I'm not going to explain 
 All I want to say is that it intuitively makes sense that $ \Phi(s) $ will play the role of $ g(s) $,
 $ \Lambda(x) $ will play the role of $ f(x) $, and $ c $ will turn out to be $ 1 $.
 
-We'll prove an easier version of this statement (\cite{korevaar_newmans_1982} calls it `A Poor Man's Ikehara-Wiener Theorem')
-which is sufficient to prove the Prime Number Theorem.
-
 But now, notice that in order to use this theorem, we need to show that $ \Phi(s) - \frac{1}{s - 1} $
 can be continued analytically on the real line. This is where the crucial observation of Riemann
 comes in. Showing that $ \Phi(s) - \frac{1}{s - 1} $ is analytic on $ Re(s) \geq 1 $, using the Residue
-Theorem, is equivalent to proving that $ \zeta(s) \neq 0 $ for any $ s $ with $ Re(s) = 1 $ (assuming,
-of course, that $ \zeta $ doesn't have any poles, which is relatively easy to prove).
-Riemann stated this in his 1859 paper, but couldn't prove this result.
+Theorem, is equivalent to proving that $ \zeta(s) \neq 0 $ for any $ s $ with $ Re(s) = 1 $. Of course,
+we also need to show that $ \zeta $ doesn't have any poles other than $ s = 1 $, which is relatively easy to prove,
+even for $ Re(s) \geq 0 $.
 
+We'll prove an easier version of this statement (\cite{korevaar_newmans_1982} calls it `A Poor Man's Ikehara-Wiener Theorem')
+which is sufficient to prove the Prime Number Theorem. However, at least for me personally, seeing this result
+and getting some `coefficient extraction' intuition was very useful. 
 Here's the statement we'll prove instead of the Ikehara-Wiener Theorem:
 
 \begin{lemma}
@@ -246,7 +250,7 @@ the value $ g(0) $: convergence will be sufficient to deduce the Prime Number Th
 
 Let's now start the proof.
 
-\section{Overview of the Proof}
+\section{Reducing Newman's Proof to Proving Properties of the Zeta Function}
 
 Let $ \nu(x) $, which is sometimes called the \textbf{Chebyshev's theta function},
 be defined as 
@@ -258,8 +262,8 @@ counts each prime and weights them according to the inverse of their density.
 Thus, we expect $ \nu(x) \sim x $ if we believe the Prime Number Theorem.
 In fact, this turns out to imply the Prime Number Theorem. The proof of this
 lemma is pretty clear and is almost identical to Lemma \ref{lem:epsilon_convergence_trick_phi},
-and also stated explicitly in Newman's paper unlike Lemma \ref{lem:epsilon_convergence_trick_phi},
-so I omit it.
+and unlike Lemma \ref{lem:epsilon_convergence_trick_phi}, is stated explicitly
+in Newman's paper, so I chose to omit it from this writeup.
 
 \begin{lemma}
     If $ \nu(x) \sim x $, $ \pi(x) \sim x \log x $.
@@ -274,21 +278,23 @@ In order to do this, we'll show that the integral
 converges. Let's see why this would suffice intuitively. By Chebyshev's upper bound,
 we know that $ \nu(x) = O(x) $. Now, notice that if $ \nu(x) $ wasn't exactly approaching $ x $,
 the above integral would turn into the harmonic series and would blow up to infinity. Thus, $ \nu(x) $ should 
-\textbf{exactly} cancel with $ x $. 
+\textbf{exactly} cancel with $ x $. The rigorous proof is given in Lemma \ref{lem:newman_vi}.
 
 In order to prove that this integral is convergent, we'll use the Poor Man's Ikehara-Wiener Theorem.
-More specifically, we'll pick $ f(t) := \nu(e^{t}) e^{-t} -1 $ and 
+In particular, we'll pick $ f(t) := \nu(e^{t}) e^{-t} -1 $ and 
 \[ g(z) = \frac{\Phi(z+1)}{z+1} - \frac{1}{z} \]
 
-Well, these look like they have absolutely nothing to do with $ \frac{\nu(x) - x}{x^{2}} $,
-but some trickery with integrals shows that they are actually equivalent. This
-is done in $ \ref{lem:newman_v} $.
+Showing that this choice of $ f $ and $ g $ produces $ \frac{\nu(x) - x}{x^{2}} $
+is done in Lemma \ref{lem:newman_v}.
 
 To apply the theorem, we'll need $ f(t) $ to be locally bounded 
 and $ g(z) $ to be analytic on $ Re(z) \geq 0 $.
-The fact that $ f(t) $ is bounded follows from the fact a $ \nu(x) = O(x) $. The analyticity of $ g(z) $ is equivalent to proving
-that the Zeta function has no zeros with $ Re(s) = 1 $ by the calculus of residues. 
-The formal proof is given in \ref{lem:newman_v_conditions}.
+The fact that $ f(t) $ is bounded follows from the fact that $ \nu(x) = O(x) $ after replacing $ e^{t} $ with $ x $. 
+The analyticity of $ g(z) $ is equivalent to proving
+that the Zeta function has no zeros with $ Re(s) = 1 $ by the calculus of residues,
+since multiplying a meromorphic function ($ \Phi(z + 1) $) with an 
+analytic function with no zeros on the right half-plane ($ \frac{1}{z + 1} $) doesn't change the order of 
+the zeros and poles of the meromorphic function.
 
 Thus, we have reduced the proof of the Prime Number Theorem to holomorphically
 extending $ \zeta(s) - \frac{1}{s - 1} $ to the right-half plane and showing that it doesn't
@@ -309,7 +315,7 @@ This states that the Zeta function doesn't have any poles in the complex plane
 other than $ s = 1 $.
 
 The key idea in the proof is to realize that $ \frac{1}{s - 1} $
-can be made to look like the Zeta function. More specifically,
+can be made to look like the Zeta function. Specifically,
 
 \[ \frac{1}{s-1} = \int_{1}^{\infty} \frac{1}{x^{s}} dx\]
 Then, we'll use the cancellation between $ \frac{1}{n^{s}} $ and
@@ -319,8 +325,8 @@ Here's the proof:
 \begin{proof}
     We have that
     \begin{align*}
-        \zeta(s) - \frac{1}{s - 1} = \sum_{n = 1}^{\infty} \frac{1}{n^{s}} - (\int_{1}^{\infty} \frac{1}{x^{s}} dx) \\
-        = \sum_{n = 1}^{\infty} (\frac{1}{n^{s}} - \int_{n}^{n + 1} \frac{1}{x^{s}} dx) = \sum_{n = 1}^{\infty} \int_{n}^{n+1} (\frac{1}{n^{s}} - \frac{1}{x^{s}}) dx
+        \zeta(s) - \frac{1}{s - 1} &= \sum_{n = 1}^{\infty} \frac{1}{n^{s}} - (\int_{1}^{\infty} \frac{1}{x^{s}} dx) \\
+        &= \sum_{n = 1}^{\infty} (\frac{1}{n^{s}} - \int_{n}^{n + 1} \frac{1}{x^{s}} dx) = \sum_{n = 1}^{\infty} \int_{n}^{n+1} (\frac{1}{n^{s}} - \frac{1}{x^{s}}) dx
     \end{align*}
 
     Notice that
@@ -335,23 +341,26 @@ Here's the proof:
     \[ \lvert \zeta(s) - \frac{1}{s - 1} \rvert \leq \sum_{n = 1}^{\infty} \frac{\lvert s \rvert}{n^{Re(s) + 1}} \]
 
     Since the right-side is convergent for any $ s $ with $ Re(s) > 0 $ and because
-    the uniform limit of analytic functions is analytic, $ \zeta(s) $ is analytic on $ Re(s) > 0 $.
+    the uniform limit of analytic functions is analytic, $ \zeta(s) $ is analytic on $ Re(s) > 0 $
+    by taking $ n \to \infty $.
 \end{proof}
 
 We will now show that the Zeta function doesn't have any zeros with $ Re(s) = 1 $.
 
 The proof uses a trick combined with the calculus of residues. Notice that
 
-\begin{align}\label{log_derivative_zeta_and_phi}
+\begin{align*}
     \frac{\zeta(s)^{\prime}}{\zeta(s)} - \Phi(s) = \sum_{p} \log(p) (\frac{1}{p^{s} - 1} - \frac{1}{p^{s}}) 
-\end{align}
+\end{align*}
     
 Rearranging, we get
 
-\[ \frac{\zeta(s)^{\prime}}{\zeta(s)} = \Phi(s) + \sum_{p} \log(p)[\frac{1}{p^{s}(p^{s} - 1)}] \]
+\begin{align}\label{log_derivative_zeta_and_phi}
+    \frac{\zeta(s)^{\prime}}{\zeta(s)} = \Phi(s) + \sum_{p} \log(p)[\frac{1}{p^{s}(p^{s} - 1)}] 
+\end{align}
 
-Notice that the infinite sum on the right hand-side in \ref{log_derivative_zeta_and_phi} converges for $ Re(s) > 1/2 $,
-which is proved rigorously in \ref{lem:epsilon_convergence_trick_phi} but is easy 
+Notice that the infinite sum on the right hand-side in (\ref{log_derivative_zeta_and_phi}) converges for $ Re(s) > 1/2 $,
+which is proved rigorously in Lemma \ref{lem:epsilon_convergence_trick_phi} but is easy 
 to see by noticing that it's essentially equivalent to summing terms that look like
 $ n^{-2s} $.
 
@@ -363,8 +372,9 @@ an equation relating the order of the zero at $ 1, 1 \pm i \alpha $ and $ 1 \pm 
 By contradiction, assume that $ s = 1 + i \alpha $ is a zero of order $ \mu > 0 $
 for some $ \alpha > 0 $. Similarly, let $ \nu $ be the `order' of the zero at 
 $ s = 1 + 2i \alpha $. Notice that $ \nu $ might be zero, which would imply
-that $ \zeta(1 + 2 \alpha i) \neq 0 $, which is fine. Also notice that $ \bar{\zeta(s)} = \zeta(\bar(s)) $.
-Thus, $ 1 - i \alpha $ is also a zero of order $ \mu $ and similarly for $ 1 - 2 i \alpha $.
+that $ \zeta(1 + 2 \alpha i) \neq 0 $, which is fine. Also notice that $ \overline{\zeta(s)} = \zeta(\overline{s}) $.
+Thus, $ 1 - i \alpha $ is also a zero of order $ \mu $ and similarly $ \nu $ is the order
+of the zero at $ 1 - 2 i \alpha $.
 
 Now, recall from lecture that the residue at a simple pole $ z_{0} $
 might be computed by 
@@ -373,7 +383,7 @@ might be computed by
 
 which we proved by considering the Laurent series. By applying this idea to $ \Phi $ 
 (which is equivalent to applying it to the log derivative since the sum 
-on the right-hand side in \ref{log_derivative_zeta_and_phi} is absolutely convergent, so it vanishes as we take $ \epsilon $ to 0), we get the following equalities
+on the right-hand side in (\ref{log_derivative_zeta_and_phi}) is absolutely convergent, so it vanishes as we take $ \epsilon $ to 0), we get the following equalities
 
 \[ \lim_{\epsilon \to 0^{+}} \epsilon  \frac{-\zeta(1 + \epsilon)^{\prime}}{\zeta(1 + \epsilon)}  = \lim_{\epsilon \to 0^{+}}  \epsilon \Phi(1 + \epsilon) = 1 \]
 
@@ -404,19 +414,20 @@ of the zeros of the Zeta function would allow us to use similar methods in order
 the error term in the Prime Number Theorem. In particular, we have the following equality by 
 Riemann \cite{princetonacademics_andrew_2012}:
 
-\[ \pi(x) = Li(x) - \sum_{\rho} Li(x^{\rho}) + O(x^{1/2} \log x),\]
+\[ \pi(x) = \text{Li}(x) - \sum_{\rho} Li(x^{\rho}) + O(x^{1/2} \log x),\]
 
-where $ Li(x) = \int_{2}^{\infty} \frac{dt}{\log t} $ is the we logarithmic integral function we mentioned earlier.
 Thus, if all the zeros of the Zeta function are on the line $ Re(s) = 1/2 $,
 we'd have that
 
-\[ \pi(x) = Li(x) + O(x^{1/2} \log x) \]
+\[ \pi(x) = \text{Li}(x) + O(x^{1/2} \log x) \]
 
 This would, in some vague sense, tell us that the primes are distributed randomly and obey
 the Central Limit Theorem with a variance of $ \sqrt{x} $. In fact, this randomness analogy goes much further and has a great story
 where Hugh Montgomery and Freeman Dyson have tea, which I have chosen to ignore
 completely since it's super popular.
 
+Instead, I'll focus on a lesser known part of history, namely, Alan Turing's
+relationship to the Zeta function. 
 I come from a computer science background, and therefore I was fascinated to learn
 that Alan Turing also did some work on the Zeta function. In fact, one of
 his contributions involved developing the so-called Turing method to aid in the
@@ -427,9 +438,11 @@ Let's now recall the argument from lecture: use numerical methods to estimate th
 of a zero, compute the integral of the logarithmic derivative around the estimated position of the zero, 
 and check whether the numerical integral gives a value close to $ 1 $. Even though numerical integration is imprecise,
 since the winding number is an integer, we can be certain that the zero is on
-the critical line if we can bound the imprecision of the numerical method.
+the critical line if we can bound the imprecision of the numerical method. This is because 
+zeros of the Zeta function are symmetric across $ Re(s) = 1/2 $, so if the zero wasn't exactly 
+on the line, the winding number would be $ 2 $.
 
-Instead, Alan Turing proposed using the formula (that I don't really understand)
+Instead of using this argument, Alan Turing proposed using the formula (that I don't really understand)
 
 \[ N(t) = 1 + \frac{1}{\pi} \theta(t) + S(t) \]
 
@@ -439,19 +452,17 @@ Since $ N(t) $ isn't smooth and $ 1 + \frac{1}{\pi} \theta(t) $ is, $ S(t) $ sho
 also have jump discontinuities to catch up with $ N(t) $. Moreover, if $ S(t) $ jumps 
 by two at any point (unless the Zeta function has non-simple zeros, which, as stated in lecture,
 would be super surprising for reasons beyond me), we would gather that the zero was not on the
-critical line. I found this super interesting since it both pertained to something we talked about
-in lecture and Alan Turing!
+critical line.
 
 Another gem I found while looking into this is the following story: 
 Alan Turing apparently got a 40 pound grant to create an electronic chip
 specifically designed to compute the zeros of the Zeta function. However, after the
 outbreak of World War II, he couldn't finish this project \cite{hejhal_alan_2012}.
-However, he later returned to this problem in the 1950s and used a computer to 
-compute zeros of the Zeta function. In fact, he was the first person in history to do so.
-Also, he was the first person to compute zeros with high imaginary components, since he seems
-to have believed that that's where a counterexample would be found.
+However, he later returned to this problem in the 1950s and used a general-purpose computer to 
+compute zeros of the Zeta function. In fact, he was the first person in history to use a computer
+to compute the zeros of the Zeta function!
 
-Here's a quote from his notes that demonstrates his interest \cite{hejhal_alan_2012}:
+Here's a quote from his notes that demonstrates his interest in the Zeta function \cite{hejhal_alan_2012}:
 
 `[i]f it had not been for the fact that the computer remained in serviceable condition for an unusually long period from 3 p.m. one afternoon to 8 a.m. the
  following morning it is probable that the calculations would never have been done at all.'
@@ -459,27 +470,28 @@ Here's a quote from his notes that demonstrates his interest \cite{hejhal_alan_2
 Thus, Alan Turing stayed up all night in order to compute the zeros of the Zeta function! From his 1953 paper,
 testimonies of people that interacted with him, we also know that Alan Turing's skepticism for the Riemann Hypothesis
 increased over time. Towards the end of his life, Alan Turing believed strongly that the Riemann Hypothesis was false,
-which I also thought was very interesting.
+which I thought was particularly interesting.
 
 \section{Conclusion}
 
-The history, statement and the proof of the Prime Number Theorem is fascinating, but doing this project
-also made me notice that sometimes simplified proofs that uses poor man's lemmas and cool tricks isn't that useful for understanding.
-I found that I didn't gain that much satisfaction from understanding this proof, even though it was one of the
-things that excited me the most about taking this class. I'd say that the main benefit
+The history, statement and the proof of the Prime Number Theorem is fascinating, but
+I found that I didn't gain that much satisfaction from understanding Newman's proof. I'd say that the main benefit
 of trying to understand Newman's proof of the Prime Number Theorem is that the unsatisfaction that arises out of 
 the proof made me want to study concepts such as the actual Ikehara-Wiener theorem and understand the result in a
-deeper way.
+deeper way. In some sense, I find Newman's proof analogous to the proof of the Fundamental Theorem of Algebra
+using Liouville's Theorem, and I'm excited to see and understand a proof more like the one using Rouche's Theorem.
 
 \newpage
 
 \bibliographystyle{plainurl} 
-\bibliography{246a} 
+\bibliography{246a}
+
+P.S. \textbf{After} writing the writeup, I used GPT in order to check for typos, grammatical 
+mistakes and improvements in sentence structure.
 
 \newpage
 
 \appendix
-
 
 \section{A Poor Man's Ikehara-Wiener Theorem}
 
@@ -502,11 +514,11 @@ Since this set is compact and $ F(s) $ admits an analytic extension on an open
 set containing the semicircle, there
 exists some $ \delta_{R} > 0 $ such that $ F(s) $ is analytic on 
 
-\[ z \in \C : Re(s) \geq \delta, \lvert s \rvert \leq R \]
+\[ \{z \in \C : Re(s) \geq \delta, \lvert s \rvert \leq R\} \]
 
 Let $ \gamma_{R} $ be the curve that traces the boundary of the semicircle in the right half plane,
-keeps going until it hits the $ Re(s) = - \delta_{R} $ level, and then travels down and back along
-the circle. The Newman's Tauberian Theorem page in AoPS has a good illustration (LINK). Let $ \gamma_{R}^{+} $
+keeps going until $ Re(s) = - \delta_{R} $, and then travels down and back along
+the semicircle. The Newman's Tauberian Theorem page in AoPS has a good illustration \cite{noauthor_aops_nodate-1}. Let $ \gamma_{R}^{+} $
 be the portion of the curve that is in the right half-plane and $ \gamma_{R}^{-} $ be the portion in the
 left half-plane.
 
@@ -561,9 +573,9 @@ handle $ I_{2}(R) $.
 
 Since 
 
-\[ \lvert F_{T}(s) \rvert \leq M \int_{0}^{T} \lvert e^{-st} \rvert dt \leq M \frac{e^{-T \sigma}}{\sigma} \],
+\[ \lvert F_{T}(s) \rvert \leq M \int_{0}^{T} \lvert e^{-st} \rvert dt \leq M \frac{e^{-T \sigma}}{\sigma}, \]
 
-we have that the same bound as $ \gamma_{R}^{+} $ goes through. More specifically,
+the same argument as $ \gamma_{R}^{+} $ goes through. To be precise,
 
 \begin{align*}
     \lvert \frac{1}{2 \pi i} \int_{\gamma_{R}^{-}} F_{T}(s) e^{Ts} (\frac{1}{s} + \frac{s}{R^{2}}) ds \rvert \leq 
@@ -576,11 +588,12 @@ on $ \gamma_{R}^{-} $.
 
 We pick some $ \delta_{1} > 0 $ and divide the integral into two parts,
 one with $ Re(s) \geq - \delta_{1} $ and the other with $ Re(s) < - \delta_{1} $.
-In the latter, we can bound $ \sigma $ safely away from $ 0 $, and we'll suffocate
+In the latter, we can bound $ \sigma $ safely away from $ 0 $ and use the exponential decay
+in $ e^{-sT} $, and we'll suffocate
 the former by taking $ \delta_{1} $ to $ 0 $, which is sufficient since 
 the length of the integral is bounded above by $ 2 \arcsin \frac{\delta_{1}}{R} $.
 
-More specifically, the latter portion is bounded above (for fixed $ R $ and $ \delta_{1} $) by
+Notice that the portion with $ Re(s) < - \delta_{1} $ is bounded above (for fixed $ R $ and $ \delta_{1} $) by
 
 \begin{align}\label{latter}
     \frac{1}{2\pi} B(R) e^{-T \delta_{1}} (\frac{1}{\delta_{R}} + \frac{1}{R}) \pi R
@@ -588,7 +601,7 @@ More specifically, the latter portion is bounded above (for fixed $ R $ and $ \d
 
 Notice that letting $ T \to \infty $ would make this approach $ 0 $.
 
-The former portion is bounded by
+The portion where is $ Re(s) \geq - \delta_{1} $ bounded by
 
 \begin{align}\label{former}
     \frac{1}{2\pi} B(R) (\frac{1}{\delta_{R}} + \frac{1}{R}) 2 R \arcsin \frac{\delta_{1}}{R}
@@ -602,35 +615,72 @@ Given some $ \epsilon > 0 $, take $ R $ to be large enough to make the
 contribution by $ \gamma_{R}^{+} $ less than $ \epsilon $ and the contribution
 by $ F_{T}(s) $ on $ \gamma_{R}^{-} $ also less than $ \epsilon $.
 
-Then, pick $ \delta_{1} > 0 $ small enough to make \ref{former} less than $ \epsilon $.
-Lastly, take $ T \to \infty $ to make \ref{latter} less than $ \epsilon $.
+Then, pick $ \delta_{1} > 0 $ small enough to make (\ref{former}) less than $ \epsilon $.
+Lastly, take $ T \to \infty $ to make (\ref{latter}) less than $ \epsilon $.
 Thus, the entire difference is less than $ 4 \epsilon $ and we're done.
 
 
-\section{Relationship of $ \Phi(s) $ to $ \frac{\zeta(s)^{\prime}}{\zeta(s)}$}
+\section{Lemmas}
 
 \begin{lemma}\label{lem:newman_v}
-
-\end{lemma}
-
-
-
-\begin{lemma}\label{lem:newman_v_conditions}
-    $ \frac{\Phi(s + 1)}{s + 1} - \frac{1}{s} $ is analytic on 
-    $ Re(s) \geq 0 $ if and only if $ \zeta(s) $ has no zeros
-    with $ Re(s) = 1 $.
+    \[ \frac{\Phi(s + 1)}{s + 1} - \frac{1}{s} = \int_{0}^{\infty} (\nu(e^{t}) e^{-t} - 1) e^{-st} dt \]
 \end{lemma}
 \begin{proof}
-    Let's first prove the statement without the denominator.
+    This proof follows the one in \cite{noauthor_aops_nodate}, since Newman's proof 
+    uses a Riemann-Stieltjes integral.
 
-    Notice that
+    Let's first relate $ \nu(x) $ and $ \Phi(x) $ using the integral trick
+    of writing
 
+    \[ ( s + 1) \int_{p_{k}}^{p_{k+1}} \nu(x) \frac{1}{x^{s+2}} dx = \nu(p_{k}) (\frac{1}{p_{k}^{s+1}} - \frac{1}{p_{k+1}^{s+1}}) =  
+    \sum_{i = 0}^{k} \log (p_{i}) (\frac{1}{p_{k}^{s+1}} - \frac{1}{p_{k+1}^{s+1}}) \] 
 
+    and then telescoping the sum on the right-hand side for different values of $ k $.
+
+    More explicitly, we have that
+
+    \begin{align*}
+        \Phi( s + 1) = \sum_{k = 0}^{\infty} \frac{\log (p_{k})}{p_{k}^{s + 1}} = 
+        \sum_{k = 0}^{\infty}  \sum_{i = 0}^{k} \log (p_{i}) (\frac{1}{p_{k}^{s+1}} - \frac{1}{p_{k+1}^{s+1}}) = \sum_{k = 0}^{\infty} v(p_{k}) (\frac{1}{p_{k}^{s+1}} - \frac{1}{p_{k+1}^{s+1}})  
+    \end{align*}
+
+    Dividing this expression by $ \frac{1}{s + 1} $ produces the integral we're looking for, and we get
+
+    \begin{align*}
+        \frac{1}{s + 1} \sum_{k = 0}^{\infty} v(p_{k}) (\frac{1}{p_{k}^{s+1}} - \frac{1}{p_{k+1}^{s+1}}) = \sum_{k = 0}^{\infty} v(p_{k}) \int_{p_{k}}^{p_{k+1}} \nu(x) \frac{1}{x^{s+2}} dx
+        = \int_{1}^{\infty} \frac{\nu(x)}{x^{s + 2}} dx 
+    \end{align*}
+
+    Now, by using $ x = e^{t} $, we get
+
+    \[ \frac{\Phi(s + 1)}{s + 1} = \int_{1}^{\infty} \frac{\nu(x)}{x^{s + 2}} dx = 
+    \int_{0}^{\infty} \nu(e^{t}) e^{-t} e^{-st} dt\]
     
-    More specifically, let $ x = e^{t} $
-    and notice that 
-    
-    $ f(x) = \frac{\nu(x)}{x} - 1 $, so $ f(x) \leq cx - 1 $ for some $ c > 0 $.
+    Now, noticing that \[ \frac{1}{s} = \int_{0}^{\infty} e^{-st} dt \] produces the desired result.
+    % Now, notice that 
+
+    % \begin{align*}
+    %     \frac{\Phi(s+1)}{s + 1} - \frac{1}{s} = \frac{1}{s+1}((s+1)\int_{0}^{\infty} e^{-t(s+1)}\nu(e^{t}) dt - \int_{0}^{\infty} e^{-st} dt
+    %     = \int_{0}^{\infty} (\nu(e^{t})e^{-t} - 1) e^{-st} dt 
+    % \end{align*}
+
+\end{proof}
+
+\begin{lemma}\label{lem:newman_vi}
+    If \[ \int_{1}^{\infty} \frac{\nu(x) - x}{x^{2}} \] converges, then $ \nu(x) \sim x $.
+\end{lemma}
+\begin{proof}
+    Assume that there was some $ \lambda > 1 $ such that $ \nu(x) \geq \lambda x $
+    for arbitrarily large $ x $.
+
+    Then, since $ \nu(x) $ is non-decreasing, we have that
+
+    \[ \int_{x}^{\lambda x} \frac{\nu(t) - t}{t^{2}} dt \geq \int_{x}^{\lambda}  \frac{\lambda x - t}{t^{2}} dt = \int_{1}^{\lambda} \frac{\lambda - u}{u^{2}} du \] 
+
+    where we used the change of variables formula $ u = t/x $ in the last equality. 
+    Now, notice that the last integral is strictly greater than $ 0 $ and independent of $ x $. 
+    If we have this for infinitely many $ x $, the $ \int_{1}^{\infty} \frac{\nu(x) - x}{x^{2}} $ would diverge,
+    which is a contradiction. The exact same argument with less than zero instead of greater than produces the other direction.
 \end{proof}
 
 \begin{lemma}\label{lem:epsilon_convergence_trick_phi}
@@ -639,7 +689,6 @@ Thus, the entire difference is less than $ 4 \epsilon $ and we're done.
     is convergent.
 \end{lemma}
 \begin{proof}
-    
     Let $ \epsilon > 0 $ sufficiently small.
 
     For sufficiently large $ x > 0 $ we have that, $ x^{2s} - x^{s} \geq x^{2s - \epsilon} $.
@@ -647,7 +696,14 @@ Thus, the entire difference is less than $ 4 \epsilon $ and we're done.
     
     \[ \frac{1}{x^{2s} - x^{s}} \leq \frac{1}{x^{2s - \epsilon}} \]
 
-    Then, we can use the comparison test to conclude the proof.
+    This, combined with the comparison test, shows that 
+
+    \[ \sum_{p} [\frac{1}{p^{s}(p^{s} - 1)}] \] 
+
+    converges.
+
+    In order to handle the logarithm, we can use the condensation test
+    or the integral test.
 \end{proof}
 
 \end{document}
